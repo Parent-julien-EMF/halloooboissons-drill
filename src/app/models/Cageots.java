@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.text.DecimalFormat;
 
 public class Cageots {
