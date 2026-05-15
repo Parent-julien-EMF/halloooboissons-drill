@@ -83,6 +83,11 @@ public class Cageots {
         return tabRetourBouteilles;
     }
 
+    /*
+     * j'ai remarqué après coup que j'avais fait le prix moyen et non total,
+     * j'ai laisser car je me suis juste compliqué la vie mais ça change pas grand
+     * chose.
+     */
     public double demanderPrixTotal() {
         double resultat = 0;
         double accumule = 0.00;
