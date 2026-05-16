@@ -1,4 +1,4 @@
-public class Clients {
+public class Client {
 
     // attributs
     private final String nom;
@@ -6,7 +6,7 @@ public class Clients {
     private final String ville; // final pour la ville car y a pas de setters
     // constructeur
 
-    public Clients(String nom, String prenom, String ville) {
+    public Client(String nom, String prenom, String ville) {
         this.nom = nom;
         this.prenom = prenom;
         this.ville = ville;

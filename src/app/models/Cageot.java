@@ -1,6 +1,6 @@
 import java.text.DecimalFormat;
 
-public class Cageots {
+public class Cageot {
 
     private final int NBRE_BOUTEILLE = 12;
 
@@ -11,12 +11,12 @@ public class Cageots {
      * et ayant un identifiant textuel unique
      */
 
-    private Bouteille[] cageot2Bouteilles;
+    private Bouteille[] tab2bouteille;
     private final String id;
 
-    public Cageots(Bouteille[] cageot2Bouteilles, String id) {
-        this.cageot2Bouteilles = new Bouteille[NBRE_BOUTEILLE];
+    public Cageot(String id) {
         this.id = id;
+        tab2bouteille = new Bouteille[NBRE_BOUTEILLE];
     }
 
     public String getId() {
@@ -26,9 +26,9 @@ public class Cageots {
     // methode
     public boolean rangerBouteille(Bouteille bouteilleARanger) {
         boolean reussi = false;
-        for (int i = 0; i < cageot2Bouteilles.length; i++) {
-            if (cageot2Bouteilles[i] == null) {
-                cageot2Bouteilles[i] = bouteilleARanger;
+        for (int i = 0; i < tab2bouteille.length; i++) {
+            if (tab2bouteille[i] == null) {
+                tab2bouteille[i] = bouteilleARanger;
                 reussi = true;
                 break;
             }
@@ -38,9 +38,9 @@ public class Cageots {
 
     public boolean prendreBouteille(Bouteille bouteilleRechercher) {
         boolean reussi = false;
-        for (int i = 0; i < cageot2Bouteilles.length; i++) {
-            if (cageot2Bouteilles[i] == bouteilleRechercher) {
-                cageot2Bouteilles[i] = null;
+        for (int i = 0; i < tab2bouteille.length; i++) {
+            if (tab2bouteille[i] == bouteilleRechercher) {
+                tab2bouteille[i] = null;
                 reussi = true;
                 break;
             }
@@ -50,8 +50,8 @@ public class Cageots {
 
     public int nbrePlacePrise() {
         int nbrePlacePrise = 0;
-        for (int i = 0; i < cageot2Bouteilles.length; i++) {
-            if (cageot2Bouteilles[i] != null) {
+        for (int i = 0; i < tab2bouteille.length; i++) {
+            if (tab2bouteille[i] != null) {
                 nbrePlacePrise++;
             }
         }
@@ -60,8 +60,8 @@ public class Cageots {
 
     public int nbrePlaceDispo() {
         int nbrePlaceDispo = 0;
-        for (int i = 0; i < cageot2Bouteilles.length; i++) {
-            if (cageot2Bouteilles[i] == null) {
+        for (int i = 0; i < tab2bouteille.length; i++) {
+            if (tab2bouteille[i] == null) {
                 nbrePlaceDispo++;
             }
         }
@@ -70,11 +70,11 @@ public class Cageots {
 
     public Bouteille[] listeBouteillesStocke() {
         Bouteille[] tabRetourBouteilles = new Bouteille[NBRE_BOUTEILLE];
-        for (int i = 0; i < cageot2Bouteilles.length; i++) {
-            if (cageot2Bouteilles[i] != null) {
+        for (int i = 0; i < tab2bouteille.length; i++) {
+            if (tab2bouteille[i] != null) {
                 for (int k = 0; k < tabRetourBouteilles.length; k++) {
                     if (tabRetourBouteilles[k] == null) {
-                        tabRetourBouteilles[k] = cageot2Bouteilles[i];
+                        tabRetourBouteilles[k] = tab2bouteille[i];
                         break;
                     }
                 }
@@ -92,9 +92,11 @@ public class Cageots {
         double resultat = 0;
         double accumule = 0.00;
         int compte = 0;
-        for (int i = 0; i < cageot2Bouteilles.length; i++) {
-            accumule += cageot2Bouteilles[i].getPrix();
+        for (int i = 0; i < tab2bouteille.length; i++) {
+            if (tab2bouteille[i] != null) {
+            accumule += tab2bouteille[i].getPrix();
             compte++;
+            }
         }
         resultat = accumule / compte;
         return resultat;
